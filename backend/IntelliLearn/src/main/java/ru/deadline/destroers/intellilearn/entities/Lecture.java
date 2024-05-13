@@ -10,16 +10,24 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 @Entity
-@Table(name = "subjects")
-public class Subject {
+@Table(name = "lecture")
+public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id", referencedColumnName = "id")
+    private Subject subject;
+
+    private LocalDateTime dateTime;
+
     @ManyToOne
     @JoinColumn(name = "lector_id", referencedColumnName = "id")
     private User lector;
-    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 }

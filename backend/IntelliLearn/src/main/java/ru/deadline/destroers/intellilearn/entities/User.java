@@ -1,4 +1,4 @@
-package ru.deadline.destroers.intellilearn.entities;
+package ru.deadline.destroers.intellilearn.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
