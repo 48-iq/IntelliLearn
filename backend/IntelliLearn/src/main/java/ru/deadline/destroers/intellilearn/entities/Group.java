@@ -2,24 +2,25 @@ package ru.deadline.destroers.intellilearn.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 @Entity
-@Table(name = "subjects")
-public class Subject {
+@Table(name = "group")
+public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    @ManyToOne
-    @JoinColumn(name = "lector_id", referencedColumnName = "id")
-    private User lector;
-    private String description;
+    @OneToMany
+    private List<User> studentList;
+
+    @OneToOne
+    @JoinColumn(name = "curator_id", referencedColumnName = "id")
+    private User curator;
+    private String name;
 }

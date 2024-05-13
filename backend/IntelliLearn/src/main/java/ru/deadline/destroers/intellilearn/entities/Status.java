@@ -1,7 +1,6 @@
-package ru.deadline.destroers.intellilearn.entities;
+package ru.deadline.destroers.intellilearn.Entities;
 import jakarta.persistence.*;
 import lombok.*;
-import ru.deadline.destroers.intellilearn.entities.User;
 
 import java.time.LocalDateTime;
 
