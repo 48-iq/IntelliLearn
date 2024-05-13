@@ -1,2 +1,7 @@
-package ru.deadline.destroers.intellilearn.exceptions;public class UserAlreadyExistException {
+package ru.deadline.destroers.intellilearn.exceptions;
+
+import lombok.experimental.StandardException;
+
+@StandardException
+public class UserAlreadyExistException extends RuntimeException{
 }
