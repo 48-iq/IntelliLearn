@@ -1,2 +1,13 @@
-package ru.deadline.destroers.intellilearn.repositories;public class UserRepository {
+package ru.deadline.destroers.intellilearn.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import ru.deadline.destroers.intellilearn.entities.User;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByUsername(String username);
+    boolean existsByUsername(String username);
 }
