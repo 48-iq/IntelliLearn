@@ -1,0 +1,46 @@
+import { Content } from "antd/es/layout/layout"
+import { ReactNode, useState } from "react"
+import styled from "styled-components"
+
+interface LoginLayoutProps {
+  children: ReactNode
+}
+
+export const LoginLayout = ({children}: LoginLayoutProps) => {
+
+  return (
+    <Wrapper>
+      <PhotoPreview>
+      <img src={'loginbg.jpg'}/>
+      </PhotoPreview>
+      <Content>
+        {children}
+      </Content>
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('bgFormLogin.jpg');
+  background-size: cover;
+  background-position: center;
+`
+const PhotoPreview = styled.div`
+  height: 100%;
+  width: 60%;
+  max-width: 810px;
+  display: flex;
+  background-color: #E0DCDC;
+  > img {
+    width: 100%;
+  }
+`
+
+const WrapperContent = styled(Content)`
+  background-color: white;
+`

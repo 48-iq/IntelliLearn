@@ -86,8 +86,11 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
+body {
+    background-color: #F5F5F5;
+}
 
-/* HTML5 display-role reset for older browsers */
+
 article,
 aside,
 details,
