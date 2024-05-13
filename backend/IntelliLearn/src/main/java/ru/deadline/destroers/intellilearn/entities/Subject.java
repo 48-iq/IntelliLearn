@@ -3,8 +3,6 @@ package ru.deadline.destroers.intellilearn.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @AllArgsConstructor
