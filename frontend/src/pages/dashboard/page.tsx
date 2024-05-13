@@ -1,4 +1,4 @@
-import { MainLayout } from "@/widgets/main-layout"
+import { MainLayout } from "@/packages/main-layout"
 import { ProgressBarComponent } from "@/widgets/progress-bar/ui"
 import { Tabs, TabsProps } from "antd"
 
