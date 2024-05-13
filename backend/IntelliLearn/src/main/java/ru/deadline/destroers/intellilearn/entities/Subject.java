@@ -1,9 +1,7 @@
-package ru.deadline.destroers.intellilearn.Entities;
+package ru.deadline.destroers.intellilearn.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
