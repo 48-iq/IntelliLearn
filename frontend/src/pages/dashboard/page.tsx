@@ -1,11 +1,9 @@
 import { MainLayout } from "@/packages/main-layout"
 import { ProgressBarComponent } from "@/widgets/progress-bar/ui"
 import { Tabs, TabsProps } from "antd"
+import { useLocation } from "react-router-dom"
 
 export const DashboardPage = () => {
-  const handleChange = (key: string) => {
-    console.log(key)
-  }
   
   const items: TabsProps['items'] = [
     {
@@ -52,7 +50,7 @@ export const DashboardPage = () => {
 
   return (
     <MainLayout>
-      <Tabs defaultActiveKey="1" items={items} onChange={handleChange}/>
+      <Tabs defaultActiveKey="1" items={items}/>
     </MainLayout>
   )
 }

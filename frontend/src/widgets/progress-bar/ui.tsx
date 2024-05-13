@@ -18,7 +18,7 @@ export const ProgressBarComponent = (props: { procent: number, id: string }) => 
           duration: 1400,
           color: '#00b415',
           trailColor: '#eee',
-          trailWidth: 1,
+          trailWidth: 4,
           svgStyle: { width: '100%', height: '100%' },
           text: {
             style: {
