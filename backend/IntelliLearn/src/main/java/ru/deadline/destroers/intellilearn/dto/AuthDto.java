@@ -5,7 +5,7 @@ import lombok.*;
 @Data
 @ToString
 @AllArgsConstructor
-public class AuthRequest {
+public class AuthDto {
     private String username;
     private String password;
 }
