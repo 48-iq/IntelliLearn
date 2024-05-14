@@ -3,7 +3,11 @@ package ru.deadline.destroers.intellilearn.services.notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import ru.deadline.destroers.intellilearn.entities.Notification;
+import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.services.notification.interfaces.Notificatable;
+
+import java.util.List;
 
 @Service
 public class NotificationService implements Notificatable {
@@ -12,13 +16,8 @@ public class NotificationService implements Notificatable {
     private SimpMessagingTemplate messagingTemplate;
 
     @Override
-    public void sendNotificationToGroup(Long groupId, String message) {
-        messagingTemplate.convertAndSend("/topic/group/" + groupId, message);
-    }
-
-    @Override
-    public void sendNotificationToStudent(Long studentId, String message) {
-        messagingTemplate.convertAndSend("/topic/student/" + studentId, message);
+    public void sendNotification(List<User> users, Notification message) {
+        //messagingTemplate.convertAndSend("/topic/" + groupId, message);
     }
 }
 
