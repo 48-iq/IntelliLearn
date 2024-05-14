@@ -11,34 +11,13 @@ import ru.deadline.destroers.intellilearn.services.interfaces.StudyService;
 @RequiredArgsConstructor
 public class StudyServiceImpl implements StudyService {
     private final TaskRepository taskRepository;
+    @Override
+    public void addReminder(StudyReminder studyReminder) {
 
-    public void addTaskToStudent(User student, Task task) {
-        if (student!= null) {
-            student.getTaskList().add(task);
-        }
     }
 
-    public void updateTaskStatus(User student, Long taskId) {
-        if (student!= null) {
-            for (Task task : student.getTaskList()) {
-                if (task.getId().equals(taskId)) {
-                    task.setReady(true);
-                    break;
-                }
-            }
-        }
-    }
+    @Override
+    public void removeReminder(String reminderId) {
 
-    public double calculateProgress(User student) {
-        if (student == null) return 0;
-
-        int completedTasks = 0;
-        for (Task task : student.getTaskList()) {
-            if (task.getReady()) {
-                completedTasks++;
-            }
-        }
-
-        return (double) completedTasks / student.getTaskList().size() * 100;
     }
 }

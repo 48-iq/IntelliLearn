@@ -37,11 +37,14 @@ public class User implements UserDetails {
     private List<Status> postedStatusList;//this user created it
     @OneToMany
     private List<Task> taskList;
+    @OneToMany
+    private List<Subject> subjects;
+    @OneToMany
+    private List<Result> results;
 
     @ManyToMany(mappedBy = "recipients")
     private List<Notification> notificationList ;
 
-    //user details
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
     private boolean isCredentialsNonExpired = true;

@@ -19,10 +19,12 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String description;
     @Lob
     @Column(name = "file",columnDefinition = "BLOB")
     private byte[] file;
+    @Column(name = "subject", columnDefinition = "")
+    @OneToMany
+    private Subject subject;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     @OneToMany

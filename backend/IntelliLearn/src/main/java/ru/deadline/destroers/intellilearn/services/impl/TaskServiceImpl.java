@@ -48,23 +48,12 @@ public class TaskServiceImpl implements TaskService {
     public void unpinTaskFromUser(Long userId, Long taskId) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow();
-        User user = userRepository.findById(userId)
-                .orElseThrow();
 
         if(task.getStudentsList() == null){
             return;
         }
 
-        Optional<User> userInTask = task.getStudentsList().stream()
-                .filter(student -> student.getId().equals(user.getId()))
-                .findFirst();
-
-        if (userInTask.isPresent()) {
-            task.getStudentsList().removeIf(student -> student.getId().equals(user.getId()));
-            taskRepository.save(task);
-        } else {
-            throw new IllegalArgumentException("User not assigned to the task");
-        }
+        task.getStudentsList().removeIf((student) -> student.getId().equals(userId));
     }
 
     @Override
