@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 import ru.deadline.destroers.intellilearn.entities.Task;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.repositories.TaskRepository;
-import ru.deadline.destroers.intellilearn.services.interfaces.Studable;
+import ru.deadline.destroers.intellilearn.services.interfaces.StudyService;
 
 @Service
 @RequiredArgsConstructor
-public class StudyService implements Studable {
+public class StudyServiceImpl implements StudyService {
     private final TaskRepository taskRepository;
 
     public void addTaskToStudent(User student, Task task) {

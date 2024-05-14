@@ -1,4 +1,4 @@
-package ru.deadline.destroers.intellilearn.services.schedule;
+package ru.deadline.destroers.intellilearn.services.impl;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,13 +9,13 @@ import ru.deadline.destroers.intellilearn.entities.Group;
 import ru.deadline.destroers.intellilearn.entities.GroupScheduleDay;
 import ru.deadline.destroers.intellilearn.exceptions.NoSuchDocumentException;
 import ru.deadline.destroers.intellilearn.exceptions.NoSuchGroupElement;
-import ru.deadline.destroers.intellilearn.services.schedule.interfaces.IScheduleService;
+import ru.deadline.destroers.intellilearn.services.interfaces.ScheduleService;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 @Service
-public class ScheduleService implements IScheduleService {
+public class ScheduleServiceImpl implements ScheduleService {
     @Value("${}")//дописать из проперти
     private String basedScheduleURL;
     public GroupScheduleDay getCurrentDaySchedule(Group group){

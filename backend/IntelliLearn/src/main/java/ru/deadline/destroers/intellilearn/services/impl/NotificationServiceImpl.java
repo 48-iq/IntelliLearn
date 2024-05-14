@@ -16,8 +16,33 @@ public class NotificationServiceImpl implements NotificationService {
     private final SimpMessagingTemplate messagingTemplate;
 
     @Override
-    public void sendNotification(List<User> users, Notification message) {
-        //messagingTemplate.convertAndSend("/topic/" + groupId, message);
+    public void sendNotification(Notification notification, List<User> users) {
+
+    }
+
+    @Override
+    public Notification getNotification(Long notificationId) {
+        return null;
+    }
+
+    @Override
+    public Notification createNotification(Notification notification) {
+        return null;
+    }
+
+    @Override
+    public Notification updateNotification(Notification notification) {
+        return null;
+    }
+
+    @Override
+    public void deleteNotification(Long notificationId) {
+
+    }
+
+    @Override
+    public List<Notification> getNotificationByUser(Long userId) {
+        return null;
     }
 }
 
