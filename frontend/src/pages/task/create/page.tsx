@@ -7,7 +7,7 @@ import { TitleCustom } from "@/packages/title"
 const { RangePicker } = DatePicker
 
 export const CreateTaskPage = () => {
-  const [questionList, setQuestionList] = useState<{ question: string; responses: string[]; correctAnswerIndex: number | null }[]>([])
+  const [questionList, setQuestionList] = useState<{ question: string; responses: string[]; correctresponsesId: number | null }[]>([])
   const [selectedDates, setSelectedDates] = useState<{ start: string; end: string[] }[]>([])
   const [nameGroup, setNameGroup] = useState<string[]>([])
   const [nameTask, setNameTask] = useState('')
@@ -16,7 +16,7 @@ export const CreateTaskPage = () => {
   const filteredOptions = options.filter((o) => !nameGroup.includes(o))
   
   const addQuestion = () => {
-    setQuestionList([...questionList, { question: '', responses: [], correctAnswerIndex: null }])
+    setQuestionList([...questionList, { question: '', responses: [], correctresponsesId: null }])
   }
 
   const handleQuestionChange = (index: number, value: string) => {
@@ -39,7 +39,7 @@ export const CreateTaskPage = () => {
   
   const handleCorrectAnswerChange = (questionIndex: number, responseIndex: number) => {
     const updatedQuestionList = [...questionList]
-    updatedQuestionList[questionIndex].correctAnswerIndex = responseIndex
+    updatedQuestionList[questionIndex].correctresponsesId = responseIndex
     setQuestionList(updatedQuestionList)
   }
   
@@ -124,7 +124,7 @@ export const CreateTaskPage = () => {
                     placeholder={`Ответ ${responseIndex }`}
                   />
                     <Radio
-                      checked={question.correctAnswerIndex === responseIndex}
+                      checked={question.correctresponsesId === responseIndex}
                       onChange={() => handleCorrectAnswerChange(questionIndex, responseIndex)}
                     >
                     Отметить как правильный ответ
