@@ -9,15 +9,15 @@ import ru.deadline.destroers.intellilearn.services.interfaces.StudyService;
 
 @Service
 @RequiredArgsConstructor
-public class StudyServiceImpl implements StudyService {
-    private final TaskRepository taskRepository;
-    @Override
-    public void addReminder(StudyReminder studyReminder) {
-
-    }
-
-    @Override
-    public void removeReminder(String reminderId) {
-
-    }
+public class StudyServiceImpl {//implements StudyService {
+//    private final TaskRepository taskRepository;
+//    @Override
+//    public void addReminder(StudyReminder studyReminder) {
+//
+//    }
+//
+//    @Override
+//    public void removeReminder(String reminderId) {
+//
+//    }
 }
