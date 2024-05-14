@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.deadline.destroers.intellilearn.entities.User;
-import ru.deadline.destroers.intellilearn.exceptions.NoSuchUser;
+import ru.deadline.destroers.intellilearn.exceptions.NoSuchUserException;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
 import ru.deadline.destroers.intellilearn.services.interfaces.RegistrationService;
 
@@ -24,7 +24,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         try {
             userRepository.deleteById(userId);
         } catch (Exception e) {
-            throw new NoSuchUser("Such user does not exist in database");
+            throw new NoSuchUserException("Such user does not exist in database");
         }
     }
 }

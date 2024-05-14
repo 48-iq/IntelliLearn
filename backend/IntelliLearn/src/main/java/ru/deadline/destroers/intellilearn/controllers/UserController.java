@@ -1,7 +1,6 @@
 package ru.deadline.destroers.intellilearn.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.exceptions.UserNotFoundControllerException;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
+import ru.deadline.destroers.intellilearn.services.interfaces.UserService;
+
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor

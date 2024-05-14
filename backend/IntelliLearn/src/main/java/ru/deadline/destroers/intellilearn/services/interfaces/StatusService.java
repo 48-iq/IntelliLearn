@@ -2,16 +2,15 @@ package ru.deadline.destroers.intellilearn.services.interfaces;
 
 import ru.deadline.destroers.intellilearn.entities.Status;
 
+import java.util.List;
+
 public interface StatusService {
-    // Create a new status
     Status createStatus(Status status);
 
-    // Pin a status to a user
-    void pinStatusToUser(String statusId, String userId);
+    void pinStatusToUser(Long statusId, Long userId);
 
-    // Unpin a status from a user
-    void unpinStatusFromUser(String statusId, String userId);
+    void unpinStatusFromUser(Long statusId, Long userId);
 
-    // Delete a status by its ID
-    void deleteStatus(String statusId);
+    void deleteStatus(Long statusId);
+    List<Status> getAllUsersStatuses(Long userId);
 }

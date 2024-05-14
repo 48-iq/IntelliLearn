@@ -25,6 +25,6 @@ public class GroupScheduleDay { // для группы его расписани
     private Group group;
 
     @OneToMany
-    private List<Subject> lectureList;
+    private List<Lecture> lectureList;
 
 }
