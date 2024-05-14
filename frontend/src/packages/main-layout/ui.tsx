@@ -34,7 +34,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
     {
       key: '5',
       label: 'Регестрация',
-      link: '/auth/registration'
+      link: '/auth/registration'  
     }
   ]
 
@@ -46,34 +46,35 @@ export const MainLayout = ({children}: MainLayotProps) => {
   
   return (
     <Layout>
-      <Header
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <Menu 
-          theme="dark"
-          mode="horizontal"
-          style={{width: '100%'}}
-        >
-          {items}
-        </Menu>
-      </Header>
+      <HeaderCustom>
+        <Logo src="/logo.png" />
+          <Menu 
+            mode="horizontal"
+            style={{width: '42%', marginLeft: '22%', backgroundColor: '#F5F5F5'}}
+          >
+            {items}
+          </Menu>
+      </HeaderCustom>
       <MainContent>
         <ContentContainer>
           {children}
         </ContentContainer>
       </MainContent>
-      <Footer>create by deadline destroyers © {new Date().getFullYear()}</Footer>
+      <Footer style={{color: '#1677FF', fontSize: '15px'}}>create by deadline destroyers © {new Date().getFullYear()}</Footer>
     </Layout>
   )
 }
 
+const HeaderCustom = styled(Header)`
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  margin: auto;
+` 
 const MainContent = styled(Content)`
   padding: 48px 48px;
 `
@@ -82,4 +83,9 @@ const ContentContainer = styled.div`
   min-height: 600px;
   background-color: white;
   border-radius: 20px;
+`
+const Logo = styled.img`
+  width: 5%;
+  height: 100%;
+  margin-left: 2%;
 `

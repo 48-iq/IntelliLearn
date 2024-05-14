@@ -1,6 +1,6 @@
 import { InputField, SelectField, enumToOptions } from "@/packages/form-components/fields"
 import { LockFilled, UserOutlined } from "@ant-design/icons"
-import { Button, Divider, Flex, Form, Space, } from "antd"
+import { Button, Divider, Form } from "antd"
 import { useForm } from "effector-forms"
 import { $$form } from "./model"
 import { Content } from "antd/es/layout/layout"
@@ -10,8 +10,8 @@ import { TitleCustom } from "@/packages/title"
 
 export const CreateUserPage = () => {
   const { fields } = useForm($$form)
-  return(
-    <ContentContainer>
+  return (
+    <Wrapper>
       <MainContent>
         <TitleCustom>Регистрация</TitleCustom>
         <Form>
@@ -29,7 +29,7 @@ export const CreateUserPage = () => {
             field={fields.password}
           />
           <Divider orientation="left">Личные данные</Divider>
-          <Flex justify="space-between">
+          <FlexContainer>
             <div>
               <InputField
                 label={'Имя'}
@@ -60,8 +60,7 @@ export const CreateUserPage = () => {
                 field={fields.group}
               />
             </div>
-        
-          </Flex>
+          </FlexContainer>
 
           <Divider orientation="left">Ваша роль</Divider>
           <SelectField 
@@ -70,22 +69,35 @@ export const CreateUserPage = () => {
             label="Роль"
             size="large"
           />
-          <Button style={{marginTop: '5%'}} type="primary" block>Обновить</Button>
+          <Button style={{marginTop: '5%'}} type="primary" block size="large">Обновить</Button>
         </Form>
       </MainContent>
-    </ContentContainer>
+    </Wrapper>
   )
 }
 
 const MainContent = styled(Content)`
   padding: 48px 48px;
-  width: 50%;
   background-color: white;
   border-radius: 20px;
+  max-width: 800px;
   margin: auto;
-  min-height: 600px;
 `
-const ContentContainer = styled.div`
-  padding: 24px;
-  background-color: #E0DCDC;  
+const Wrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url('../bgFormLogin.jpg');
+  background-size: cover;
+  background-position: center;
+`
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  > div {
+    width: 48%;
+  }
 `

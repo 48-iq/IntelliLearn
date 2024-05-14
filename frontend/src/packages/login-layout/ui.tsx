@@ -35,11 +35,8 @@ const PhotoPreview = styled.div`
   width: 75%;
   max-width: 810px;
   display: flex;
-  /* background-color: #E0DCDC; */
   > img {
     width: 100%;
   }
-  /* border-radius: '40%'; */
   border-radius: 40%;
-  opacity: 0;
 `
