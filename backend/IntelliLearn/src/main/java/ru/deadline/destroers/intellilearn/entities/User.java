@@ -36,6 +36,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "creator")
     private List<Status> postedStatusList;//this user created it
 
+    @ManyToMany(mappedBy = "recipients")
+    private List<Notification> notificationList ;
+
     //user details
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
