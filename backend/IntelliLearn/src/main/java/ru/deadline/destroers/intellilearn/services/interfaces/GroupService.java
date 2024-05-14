@@ -7,11 +7,11 @@ public interface GroupService {
 
     Group updateGroup(Group group);
 
-    Group getGroup(String groupId);
+    Group getGroup(Long groupId);
 
-    void deleteGroup(String groupId);
+    void deleteGroup(Long groupId);
 
-    void addUserToGroup(String groupId, String userId);
+    void addUserToGroup(Long groupId, Long userId);
 
-    void removeUserFromGroup(String groupId, String userId);
+    void removeUserFromGroup(Long groupId, Long userId);
 }

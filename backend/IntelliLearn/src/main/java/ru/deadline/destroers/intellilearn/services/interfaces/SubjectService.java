@@ -8,9 +8,9 @@ public interface SubjectService {
 
     Subject updateSubject(Subject subject);
 
-    Subject getSubject(String subjectId);
+    Subject getSubject(Long subjectId);
 
-    void deleteSubject(String subjectId);
+    void deleteSubject(Long subjectId);
 
     Subject getSubjectByName(String name);
 }
