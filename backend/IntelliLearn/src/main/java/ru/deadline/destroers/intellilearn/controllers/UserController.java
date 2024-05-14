@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.exceptions.UserNotFoundContollerException;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
