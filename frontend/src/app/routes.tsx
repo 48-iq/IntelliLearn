@@ -1,5 +1,6 @@
 import { DashboardPage } from "@/pages/dashboard"
 import { LoginPage } from "@/pages/login"
+import { ArchiveTaskPage } from "@/pages/task/archive"
 import { CreateTaskPage } from "@/pages/task/create"
 import { CreateUserPage } from "@/pages/user/create"
 import { SingleUserPage } from "@/pages/user/single"
@@ -26,5 +27,9 @@ export const router = createBrowserRouter([
   {
     path: 'auth/registration',
     element: <CreateUserPage />
+  },
+  {
+    path: 'tasks',
+    element: <ArchiveTaskPage />
   }
 ])

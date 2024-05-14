@@ -35,6 +35,11 @@ export const MainLayout = ({children}: MainLayotProps) => {
       key: '5',
       label: 'Регестрация',
       link: '/auth/registration'  
+    },
+    {
+      key: '6',
+      label: 'Задания',
+      link: '/tasks'  
     }
   ]
 
