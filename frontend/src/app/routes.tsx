@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     
   },
   {
-    path: '/loginasdads',
+    path: 'auth/login',
     element: <LoginPage />
   },
   {

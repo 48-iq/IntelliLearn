@@ -7,7 +7,7 @@ export const verifyToken = (router: AppRouterInstance) => {
   const secretKey = 'my_secret_key'
 
   if (!token) {
-    router.push('/loginasdads')
+    router.push('/auth/login')
     console.log('token not found')
     return null
   }

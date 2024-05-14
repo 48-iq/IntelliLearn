@@ -1,23 +1,22 @@
 import { MainLayout } from "@/packages/main-layout"
-import { Button, Divider, Form, Input, Select, Space, DatePicker, GetProps, DatePickerProps, Flex } from "antd"
+import { Button, Divider, Form, Input, Select, Space, DatePicker, Flex, Radio } from "antd"
 import { useState } from "react"
 import React from "react"
 import { TitleCustom } from "@/packages/title"
 
-type RangePickerProps = GetProps<typeof DatePicker.RangePicker>
 const { RangePicker } = DatePicker
 
 export const CreateTaskPage = () => {
-  const [questionList, setQuestionList] = useState<{ question: string; responses: string[] }[]>([])
-  const [nameTask, setNameTask] = useState('')
-  const [nameGroup, setNameGroup] = useState<string[]>([])
+  const [questionList, setQuestionList] = useState<{ question: string; responses: string[]; correctAnswerIndex: number | null }[]>([])
   const [selectedDates, setSelectedDates] = useState<{ start: string; end: string[] }[]>([])
+  const [nameGroup, setNameGroup] = useState<string[]>([])
+  const [nameTask, setNameTask] = useState('')
 
   const options = ['группа 1','группа 2', 'группа 3', 'группа 4', 'группа 5']
   const filteredOptions = options.filter((o) => !nameGroup.includes(o))
   
   const addQuestion = () => {
-    setQuestionList([...questionList, { question: '', responses: [] }])
+    setQuestionList([...questionList, { question: '', responses: [], correctAnswerIndex: null }])
   }
 
   const handleQuestionChange = (index: number, value: string) => {
@@ -37,7 +36,13 @@ export const CreateTaskPage = () => {
     updatedQuestionList[questionIndex].responses[responseIndex] = value
     setQuestionList(updatedQuestionList)
   }
-
+  
+  const handleCorrectAnswerChange = (questionIndex: number, responseIndex: number) => {
+    const updatedQuestionList = [...questionList]
+    updatedQuestionList[questionIndex].correctAnswerIndex = responseIndex
+    setQuestionList(updatedQuestionList)
+  }
+  
   const onOk = (value: [start: any, end: any]) => {
     setSelectedDates(value)
   }
@@ -93,16 +98,16 @@ export const CreateTaskPage = () => {
             />
           </Flex>
         </Space>
-        <Divider orientation="left">Название задачи</Divider>
+        <Divider orientation="left">Название Теста</Divider>
         <Input onChange={(e) => setNameTask(e.target.value)} size="large" />
         {questionList.map((question, questionIndex) => (
           <div key={questionIndex}>
-            <Divider />
-            <TitleCustom level={5}>Задание {`${questionIndex}`}</TitleCustom>
+            <Divider orientation="left">Задание {`${questionIndex + 1}`}</Divider>
             <Input
               value={question.question}
               onChange={(e) => handleQuestionChange(questionIndex, e.target.value)}
               size="large"
+              placeholder={`Задание ${questionIndex + 1}`}
             />
             <Space direction="vertical">
             <Button type="link" onClick={() => removeQuestion(questionIndex)}>
@@ -110,19 +115,28 @@ export const CreateTaskPage = () => {
             </Button>
             {question.responses.map((response, responseIndex) => (
               <React.Fragment key={`${questionIndex}_${responseIndex}`}>
-                <TitleCustom level={5}>Ответ {`${responseIndex}`}</TitleCustom>
-                <Input
-                  value={response}
-                  onChange={(e) => handleResponseChange(questionIndex, responseIndex, e.target.value)}
-                  size="large"
-                />
+                <Divider orientation="left">Ответ {`${responseIndex + 1}`}</Divider>
+                <Space>
+                  <Input
+                    value={response}
+                    onChange={(e) => handleResponseChange(questionIndex, responseIndex, e.target.value)}
+                    size="large"
+                    placeholder={`Ответ ${responseIndex }`}
+                  />
+                    <Radio
+                      checked={question.correctAnswerIndex === responseIndex}
+                      onChange={() => handleCorrectAnswerChange(questionIndex, responseIndex)}
+                    >
+                    Отметить как правильный ответ
+                  </Radio>
+                </Space>
                 <Button type="link" onClick={() => removeResponse(questionIndex, responseIndex)}>
-                  Удалить ответ
+                  Удалить вариант ответа
                 </Button>
               </React.Fragment>
             ))}
             <Button type="primary" onClick={() => addResponse(questionIndex)} style={{marginTop: '5%'}}>
-              Добавить ответ
+              Добавить вариант ответа
             </Button>
             </Space>
           </div>

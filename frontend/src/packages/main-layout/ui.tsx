@@ -19,7 +19,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
     {
       key: '2',
       label: 'Логин',
-      link: '/loginasdads'
+      link: '/auth/login'
     },
     {
       key: '3',
