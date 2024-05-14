@@ -11,7 +11,7 @@ export const LoginLayout = ({children}: LoginLayoutProps) => {
   return (
     <Wrapper>
       <PhotoPreview>
-      <img src={'loginbg.jpg'}/>
+      <img src={'../loginbg.jpg'} style={{borderRadius: '40%'}}/>
       </PhotoPreview>
       <Content>
         {children}
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-image: url('bgFormLogin.jpg');
+  background-image: url('../bgFormLogin.jpg');
   background-size: cover;
   background-position: center;
 `
@@ -35,8 +35,11 @@ const PhotoPreview = styled.div`
   width: 75%;
   max-width: 810px;
   display: flex;
-  background-color: #E0DCDC;
+  /* background-color: #E0DCDC; */
   > img {
     width: 100%;
   }
+  /* border-radius: '40%'; */
+  border-radius: 40%;
+  opacity: 0;
 `

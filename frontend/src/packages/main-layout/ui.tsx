@@ -27,9 +27,14 @@ export const MainLayout = ({children}: MainLayotProps) => {
       link: '/users/user'
     },
     {
-      key: '3',
+      key: '4',
       label: 'Создать задачу',
       link: '/create/task'
+    },
+    {
+      key: '5',
+      label: 'Регестрация',
+      link: '/auth/registration'
     }
   ]
 
