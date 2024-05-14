@@ -8,7 +8,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,6 @@ import ru.deadline.destroers.intellilearn.dto.UserDto;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
 import ru.deadline.destroers.intellilearn.security.JwtUtil;
-import ru.deadline.destroers.intellilearn.services.interfaces.RegistrationService;
 
 @RestController
 @RequestMapping("/auth")
