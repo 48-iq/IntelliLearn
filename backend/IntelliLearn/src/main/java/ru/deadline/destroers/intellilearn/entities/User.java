@@ -38,6 +38,9 @@ public class User implements UserDetails {
     @OneToMany
     private List<Task> taskList;
 
+    @ManyToMany(mappedBy = "recipients")
+    private List<Notification> notificationList ;
+
     //user details
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
