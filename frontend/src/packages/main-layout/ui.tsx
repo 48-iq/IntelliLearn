@@ -25,6 +25,11 @@ export const MainLayout = ({children}: MainLayotProps) => {
       key: '3',
       label: 'сингл юзер',
       link: '/users/user'
+    },
+    {
+      key: '3',
+      label: 'Создать задачу',
+      link: '/create/task'
     }
   ]
 

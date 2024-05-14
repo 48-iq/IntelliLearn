@@ -2,10 +2,13 @@ import { InputField } from "@/packages/form-components/fields"
 import { MainLayout } from "@/packages/main-layout"
 import { LockFilled, UserOutlined } from "@ant-design/icons"
 import { Button, Card, Flex, Form, Image, Tabs, TabsProps } from 'antd'
+import { useForm } from "effector-forms"
 import { styled } from "styled-components"
+import { $$form } from "./model"
 
 export const SingleUserPage = () => {
-    
+  const { fields } = useForm($$form)
+
   const items: TabsProps['items'] = [
     {
       key: '1',
@@ -42,11 +45,13 @@ export const SingleUserPage = () => {
                 label={'Логин'}
                 addonBefore={<UserOutlined />}
                 size="large"
+                field={fields.login}
               />
               <InputField
                 label={'Пароль'}
                 addonBefore={<LockFilled />}
                 size="large"
+                field={fields.password}
               />
 
               <Button style={{marginTop: '5%'}} type="primary" block>Обновить</Button>

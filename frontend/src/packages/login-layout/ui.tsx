@@ -31,8 +31,8 @@ const Wrapper = styled.div`
   background-position: center;
 `
 const PhotoPreview = styled.div`
-  height: 100%;
-  width: 60%;
+  height: 80%;
+  width: 75%;
   max-width: 810px;
   display: flex;
   background-color: #E0DCDC;
