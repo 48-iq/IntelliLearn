@@ -121,7 +121,7 @@ export const CreateTaskPage = () => {
                     value={response}
                     onChange={(e) => handleResponseChange(questionIndex, responseIndex, e.target.value)}
                     size="large"
-                    placeholder={`Ответ ${responseIndex }`}
+                    placeholder={`Ответ ${responseIndex + 1}`}
                   />
                     <Radio
                       checked={question.correctresponsesId === responseIndex}
@@ -147,7 +147,7 @@ export const CreateTaskPage = () => {
           </Button>
           <Form.Item style={{marginTop: '5%'}}>
             <Button type="primary" htmlType="submit" block>
-              Сохранить
+              Сформировать задачу
             </Button>
           </Form.Item>
         </div>
