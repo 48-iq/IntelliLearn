@@ -35,6 +35,8 @@ public class User implements UserDetails {
     private List<Status> statusList;//this user received it
     @OneToMany(mappedBy = "creator")
     private List<Status> postedStatusList;//this user created it
+    @OneToMany
+    private List<Task> taskList;
 
     @ManyToMany(mappedBy = "recipients")
     private List<Notification> notificationList ;

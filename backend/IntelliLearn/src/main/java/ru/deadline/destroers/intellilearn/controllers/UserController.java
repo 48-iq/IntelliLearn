@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.exceptions.UserNotFoundContollerException;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -17,14 +16,13 @@ public class UserController {
 //    private UserService userService;
     @Autowired
     private UserRepository userRepository;
-    //@Autowired
-    //private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(
-                        ()-> new UserNotFoundContollerException("User with such id does not exist"));
+                .orElseThrow(()-> new UserNotFoundContollerException("User with such id does not exist"));
 
         if (user!= null) {
             return ResponseEntity.ok(user);
@@ -33,18 +31,17 @@ public class UserController {
         }
     }
 
-//    @PostMapping
-//    public ResponseEntity<User> createUser(@RequestBody User user) {
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        User savedUser = userRepository.save(user);
-//        return ResponseEntity.ok(savedUser);
-//    }
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        User savedUser = userRepository.save(user);
+        return ResponseEntity.ok(savedUser);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userRepository.findById(id)
-                .orElseThrow(
-                        ()->new UserNotFoundContollerException("User with such id does not exist"));
+                .orElseThrow(()->new UserNotFoundContollerException("User with such id does not exist"));
 
         if (user!= null) {
             user.setUsername(userDetails.getUsername());
