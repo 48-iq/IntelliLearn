@@ -17,13 +17,13 @@ import ru.deadline.destroers.intellilearn.dto.UserDto;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
 import ru.deadline.destroers.intellilearn.security.JwtUtil;
-import ru.deadline.destroers.intellilearn.services.registration.RegistrationService;
+import ru.deadline.destroers.intellilearn.services.impl.RegistrationServiceImpl;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
-    private final RegistrationService registrationService;
+    private final RegistrationServiceImpl registrationService;
     private final ModelMapper modelMapper;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;

@@ -1,8 +1,8 @@
-package ru.deadline.destroers.intellilearn.services.registration.interfaces;
+package ru.deadline.destroers.intellilearn.services.interfaces;
 
 import ru.deadline.destroers.intellilearn.entities.User;
 
-public interface Registrable {
+public interface RegistrationService {
     User register(User user);
     void delete(Long userId);
 }
