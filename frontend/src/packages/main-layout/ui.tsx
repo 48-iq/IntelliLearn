@@ -20,6 +20,11 @@ export const MainLayout = ({children}: MainLayotProps) => {
       key: '2',
       label: 'Логин',
       link: '/loginasdads'
+    },
+    {
+      key: '3',
+      label: 'сингл юзер',
+      link: '/users/user'
     }
   ]
 
@@ -44,6 +49,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
         <Menu 
           theme="dark"
           mode="horizontal"
+          style={{width: '100%'}}
         >
           {items}
         </Menu>

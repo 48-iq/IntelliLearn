@@ -9,9 +9,9 @@ export default function RootLayout() {
   return (
     <html lang="en">
       <body>
-        <SessionProvider>
+        {/* <SessionProvider> */}
           <RouterProvider router={router} />
-        </SessionProvider>
+        {/* </SessionProvider> */}
       </body>
     </html>
   )

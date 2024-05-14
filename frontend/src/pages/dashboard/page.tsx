@@ -1,7 +1,6 @@
 import { MainLayout } from "@/packages/main-layout"
 import { ProgressBarComponent } from "@/widgets/progress-bar/ui"
 import { Tabs, TabsProps } from "antd"
-import { useLocation } from "react-router-dom"
 
 export const DashboardPage = () => {
   

@@ -25,7 +25,7 @@ export const ProgressBarComponent = (props: { procent: number, id: string }) => 
               color: '#999',
               position: 'absolute',
               right: '0',
-              top: '30px',
+              top: '60px',
               padding: 0,
               margin: 0,
               transform: null
