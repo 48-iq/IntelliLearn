@@ -7,19 +7,19 @@ import ru.deadline.destroers.intellilearn.controllers.notification.interfaces.No
 import ru.deadline.destroers.intellilearn.services.notification.NotificationService;
 
 @RestController
-@RequestMapping("/api/notifications")
+@RequestMapping("/notifications")
 public class NotificationController implements NotificationControllerOperations {
 
     @Autowired
     private NotificationService notificationService;
 
     @Override
-    public void notifyGroup(String groupId, String message) {
+    public void notifyGroup(Long groupId, String message) {
         notificationService.sendNotificationToGroup(groupId, message);
     }
 
     @Override
-    public void notifyStudent(String studentId, String message) {
+    public void notifyStudent(Long studentId, String message) {
         notificationService.sendNotificationToStudent(studentId, message);
     }
 }

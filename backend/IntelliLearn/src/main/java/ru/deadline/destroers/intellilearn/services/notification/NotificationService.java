@@ -12,12 +12,12 @@ public class NotificationService implements Notificatable {
     private SimpMessagingTemplate messagingTemplate;
 
     @Override
-    public void sendNotificationToGroup(String groupId, String message) {
+    public void sendNotificationToGroup(Long groupId, String message) {
         messagingTemplate.convertAndSend("/topic/group/" + groupId, message);
     }
 
     @Override
-    public void sendNotificationToStudent(String studentId, String message) {
+    public void sendNotificationToStudent(Long studentId, String message) {
         messagingTemplate.convertAndSend("/topic/student/" + studentId, message);
     }
 }

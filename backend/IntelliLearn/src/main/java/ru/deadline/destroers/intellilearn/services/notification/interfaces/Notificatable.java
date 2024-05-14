@@ -1,7 +1,7 @@
 package ru.deadline.destroers.intellilearn.services.notification.interfaces;
 
 public interface Notificatable {
-    void sendNotificationToGroup(String groupId, String message);
+    void sendNotificationToGroup(Long groupId, String message);
 
-    void sendNotificationToStudent(String studentId, String message);
+    void sendNotificationToStudent(Long studentId, String message);
 }
