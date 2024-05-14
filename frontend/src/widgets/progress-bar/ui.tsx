@@ -1,11 +1,5 @@
 import ProgressBar from "progressbar.js";
 import React, { useEffect } from "react";
-import { styled } from "styled-components";
-
-const ProgressLine = styled.div`
-  width: 100%;
-  height: 20px;
-`;
 
 export const ProgressBarComponent = (props: { procent: number, id: string }) => {
   useEffect(() => {
@@ -45,5 +39,5 @@ export const ProgressBarComponent = (props: { procent: number, id: string }) => 
   }, [props.procent, props.id])
   return (
     <div id={props.id}></div>
-  );
-};
+  )
+}

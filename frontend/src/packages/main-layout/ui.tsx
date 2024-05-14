@@ -23,7 +23,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
     },
     {
       key: '3',
-      label: 'сингл юзер',
+      label: 'Профиль',
       link: '/users/user'
     },
     {

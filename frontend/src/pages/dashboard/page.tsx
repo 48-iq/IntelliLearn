@@ -1,6 +1,7 @@
 import { MainLayout } from "@/packages/main-layout"
 import { ProgressBarComponent } from "@/widgets/progress-bar/ui"
-import { Tabs, TabsProps } from "antd"
+import { Divider, Space, Tabs, TabsProps } from "antd"
+import { Notification } from '@/widgets/notification'
 
 export const DashboardPage = () => {
   
@@ -49,7 +50,9 @@ export const DashboardPage = () => {
 
   return (
     <MainLayout>
-      <Tabs defaultActiveKey="1" items={items}/>
+        <Tabs defaultActiveKey="1" items={items}/><br />
+        <Divider orientation="left">Уведомления</Divider>
+        <Notification />
     </MainLayout>
   )
 }
