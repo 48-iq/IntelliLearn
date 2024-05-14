@@ -1,0 +1,1 @@
+export { TitleCustom } from './title'
