@@ -1,25 +1,29 @@
 package ru.deadline.destroers.intellilearn.controllers.notification;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.deadline.destroers.intellilearn.controllers.notification.interfaces.NotificationControllerOperations;
+import org.springframework.web.bind.annotation.*;
 import ru.deadline.destroers.intellilearn.services.notification.NotificationService;
 
 @RestController
 @RequestMapping("/notifications")
-public class NotificationController implements NotificationControllerOperations {
+public class NotificationController {
+
+    private final NotificationService notificationService;
 
     @Autowired
-    private NotificationService notificationService;
-
-    @Override
-    public void notifyGroup(Long groupId, String message) {
-        notificationService.sendNotificationToGroup(groupId, message);
+    public NotificationController(NotificationService notificationService) {
+        this.notificationService = notificationService;
     }
 
-    @Override
-    public void notifyStudent(Long studentId, String message) {
-        notificationService.sendNotificationToStudent(studentId, message);
-    }
+//    @PostMapping("/group/{groupId}")
+//    public ResponseEntity<?> notifyGroup(@PathVariable Long groupId, @RequestBody String message) {
+//        notificationService.sendNotification(groupId, message);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @PostMapping("/student/{studentId}")
+//    public ResponseEntity<?> notifyStudent(@PathVariable String studentId, @RequestBody String message) {
+//        notificationService.sendNotificationToStudent(studentId, message);
+//        return ResponseEntity.ok().build();
+//    }
 }
