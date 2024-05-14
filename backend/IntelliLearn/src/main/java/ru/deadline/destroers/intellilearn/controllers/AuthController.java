@@ -1,8 +1,6 @@
 package ru.deadline.destroers.intellilearn.controllers;
 
-import jakarta.validation.Valid;
-import jakarta.validation.ValidationException;
-import jakarta.validation.Validator;
+
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -33,13 +31,13 @@ public class AuthController {
     private final UserRepository userRepository;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> register(@RequestBody @Valid UserDto userDto) {
+    public ResponseEntity<UserDto> register(@RequestBody UserDto userDto) {
         User user = registrationService.register(modelMapper.map(userDto, User.class));
         return ResponseEntity.ok(modelMapper.map(user, UserDto.class));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody @Valid AuthDto authDto) {
+    public ResponseEntity<String> login(@RequestBody AuthDto authDto) {
         UsernamePasswordAuthenticationToken authInputToken =
                 new UsernamePasswordAuthenticationToken(authDto.getUsername(), authDto.getPassword());
 

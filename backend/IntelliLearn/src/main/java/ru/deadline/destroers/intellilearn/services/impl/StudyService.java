@@ -1,15 +1,11 @@
-package ru.deadline.destroers.intellilearn.services.study;
+package ru.deadline.destroers.intellilearn.services.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.deadline.destroers.intellilearn.entities.Task;
 import ru.deadline.destroers.intellilearn.entities.User;
 import ru.deadline.destroers.intellilearn.repositories.TaskRepository;
-import ru.deadline.destroers.intellilearn.services.study.interfaces.Studable;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import ru.deadline.destroers.intellilearn.services.interfaces.Studable;
 
 @Service
 @RequiredArgsConstructor

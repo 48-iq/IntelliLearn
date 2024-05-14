@@ -1,19 +1,19 @@
-package ru.deadline.destroers.intellilearn.services.notification;
+package ru.deadline.destroers.intellilearn.services.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import ru.deadline.destroers.intellilearn.entities.Notification;
 import ru.deadline.destroers.intellilearn.entities.User;
-import ru.deadline.destroers.intellilearn.services.notification.interfaces.Notificatable;
+import ru.deadline.destroers.intellilearn.services.interfaces.NotificationService;
 
 import java.util.List;
 
 @Service
-public class NotificationService implements Notificatable {
+@RequiredArgsConstructor
+public class NotificationServiceImpl implements NotificationService {
 
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+    private final SimpMessagingTemplate messagingTemplate;
 
     @Override
     public void sendNotification(List<User> users, Notification message) {
