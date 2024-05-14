@@ -1,9 +1,6 @@
 package ru.deadline.destroers.intellilearn.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 import ru.deadline.destroers.intellilearn.enums.Role;
 
 import java.time.LocalDate;
@@ -15,7 +12,6 @@ import java.time.LocalDate;
 @Builder
 public class UserDto {
     private Long id;
-
     private String username;
     private String password;
     private String email;
