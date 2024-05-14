@@ -1,5 +1,5 @@
 import { Content } from "antd/es/layout/layout"
-import { ReactNode, useState } from "react"
+import { ReactNode } from "react"
 import styled from "styled-components"
 
 interface LoginLayoutProps {
@@ -39,8 +39,4 @@ const PhotoPreview = styled.div`
   > img {
     width: 100%;
   }
-`
-
-const WrapperContent = styled(Content)`
-  background-color: white;
 `
