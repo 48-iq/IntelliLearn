@@ -1,17 +1,21 @@
 package ru.deadline.destroers.intellilearn.services.interfaces;
 
+import ru.deadline.destroers.intellilearn.entities.Result;
 import ru.deadline.destroers.intellilearn.entities.Task;
+import ru.deadline.destroers.intellilearn.entities.User;
+
+import java.util.List;
 
 public interface TaskService {
     Task createTask(Task task);
 
-    void pinTaskToUser(String userId, String taskId);
+    void pinTaskToUser(Long userId, Long taskId);
 
-    void unpinTaskFromUser();
+    void unpinTaskFromUser(Long userId, Long taskId);
 
-    void deleteTask(String taskId);
+    void deleteTask(Long taskId);
 
-    Results getResults(String taskId, String userId);
+    List<Result> getResults(Long taskId);
 
     Task updateTask(Task task);
 }

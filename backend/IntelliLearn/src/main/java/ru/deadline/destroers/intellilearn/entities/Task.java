@@ -27,7 +27,4 @@ public class Task {
     private LocalDateTime endDate;
     @OneToMany
     private List<User> studentsList;
-    private Boolean Ready;
-
-
 }
