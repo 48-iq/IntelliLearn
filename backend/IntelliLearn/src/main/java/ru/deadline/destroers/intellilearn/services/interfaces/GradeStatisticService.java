@@ -1,9 +1,13 @@
 package ru.deadline.destroers.intellilearn.services.interfaces;
 
 public interface GradeStatisticService {
-    StudentStatistics getStudentStatistic(String userId);
 
-    SubjectGroupStatistics getSubjectGroupStatistic(String groupId, String subjectId);
 
-    SubjectStudentServiceStatistics getSubjectStudentService(String userId, String subjectId);
+
+//    StudentStatistic getStudentStatistic(String userId);
+//
+//    SubjectGroupStatistic getSubjectGroupStatistic(String groupId, String subjectId);
+//
+//    SubjectStudentServiceStatistic getSubjectStudentService(String userId, String subjectId);
+//
 }

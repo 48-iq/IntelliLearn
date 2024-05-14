@@ -25,6 +25,6 @@ public class LectorScheduleDay { //для лектора его расписан
     private User user;
 
     @OneToMany
-    private List<Subject> lectureList;
+    private List<Lecture> lectureList;
 
 }
