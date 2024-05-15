@@ -10,3 +10,9 @@ export const $$form = createForm({
     }
   }
 })
+
+export const  student = {
+  login: 'Давид',
+  password: '251315ru',
+  role: 'student'
+}

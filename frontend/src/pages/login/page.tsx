@@ -1,24 +1,23 @@
 import { InputField } from "@/packages/form-components/fields"
 import { LoginLayout } from "@/packages/login-layout"
 import { LockFilled, UserOutlined } from "@ant-design/icons"
-import { Button, Form } from "antd"
+import { Button, Form, notification } from "antd"
 import { useForm } from "effector-forms"
 import styled from "styled-components"
-import { $$form } from "./model"
+import { $$form, student } from "./model"
 import { useRouter } from "next/navigation"
-import { LoginEntity } from "@/entities/login"
 
 export const LoginPage = () => {
   const { fields } = useForm($$form)
   const route = useRouter()
 
-  const onFinish = () => {
-    LoginEntity.api.rest.Login({
-      login: fields.login.value,
-      password: fields.password.value
-    })
-    // notification.success({message: 'Вход', placement: 'bottomRight'})
-    route.push('/')
+  const onFinish = () => {  
+    if(fields.login.value === student.login && fields.password.value === student.password){
+      notification.success({message: 'Вход', placement: 'bottomRight'})
+      route.push('/')
+    } else {
+      notification.error({message: 'Проверьте данные', placement: 'bottomRight'})
+    }
   }
 
   return (
