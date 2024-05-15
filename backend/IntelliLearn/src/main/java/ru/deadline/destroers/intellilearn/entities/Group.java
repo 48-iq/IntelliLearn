@@ -21,4 +21,9 @@ public class Group {
     private String name;
     @OneToMany(mappedBy = "group")
     private List<User> students;
+    @ManyToMany(mappedBy = "groups")
+    private List<Task> tasks;
+
+    @OneToMany
+    private List<User> users;
 }

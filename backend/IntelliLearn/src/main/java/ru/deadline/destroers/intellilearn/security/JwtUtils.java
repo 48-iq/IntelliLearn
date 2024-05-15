@@ -19,6 +19,7 @@ public class JwtUtils {
         return JWT.create()
                 .withSubject("User details")
                 .withClaim("username", user.getUsername())
+                .withClaim("role", user.getRole())
                 .withIssuedAt(new Date())
                 .withExpiresAt(expirationDate)
                 .withIssuer("spring-app-IntelliLearn")
