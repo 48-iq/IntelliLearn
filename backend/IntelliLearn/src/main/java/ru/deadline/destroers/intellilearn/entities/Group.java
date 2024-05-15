@@ -19,6 +19,9 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @ManyToMany(mappedBy = "tasks")
-    private List<User> students;
+    @ManyToMany(mappedBy = "groups")
+    private List<Task> tasks;
+
+    @OneToMany
+    private List<User> users;
 }
