@@ -1,26 +1,24 @@
 package ru.deadline.destroers.intellilearn.entities;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.List;
 
+import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@ToString
 @Entity
-@Table(name = "group")
+@Table(name = "users")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @OneToMany
-    private List<User> studentList;
-
-    @OneToOne
-    @JoinColumn(name = "curator_id", referencedColumnName = "id")
-    private User curator;
+    private Integer id;
     private String name;
+    @ManyToMany(mappedBy = "tasks")
+    private List<User> students;
 }

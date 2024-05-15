@@ -1,24 +1,18 @@
 package ru.deadline.destroers.intellilearn.dto;
 
-import lombok.*;
-import ru.deadline.destroers.intellilearn.enums.Role;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 public class UserDto {
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
-    private String email;
     private String name;
     private String surname;
-    private String patronymic;
-    private LocalDate birthday;
-    private Role role;
-
+    private String groupName;
+    private String role;
 }
