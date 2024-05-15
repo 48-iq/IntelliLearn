@@ -6,17 +6,26 @@ import { useForm } from "effector-forms"
 import styled from "styled-components"
 import { $$form, student } from "./model"
 import { useRouter } from "next/navigation"
+import { LoginEntity } from "@/entities/login"
+import { setCookie } from "cookies-next"
 
 export const LoginPage = () => {
   const { fields } = useForm($$form)
   const route = useRouter()
 
-  const onFinish = () => {  
-    if(fields.login.value === student.login && fields.password.value === student.password){
+  const onFinish = async () => {  
+    try{
+      const response = await LoginEntity.api.rest.login({
+        userName: fields.login.value,
+        password: fields.password.value,
+      })
+      console.log(response)
+      setCookie('token', response)
+      route.push('//')
       notification.success({message: 'Вход', placement: 'bottomRight'})
-      route.push('/')
-    } else {
-      notification.error({message: 'Проверьте данные', placement: 'bottomRight'})
+    } catch (e) {
+      console.log(e)
+      notification.error({message: 'Ошибка', placement: 'bottomRight'})
     }
   }
 

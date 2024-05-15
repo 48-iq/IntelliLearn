@@ -16,13 +16,12 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
   const [session, setSession] = useState<JwtPayload | null>(null)
 
   useEffect(() => {
-    
     const userInfo = verifyToken(router)
     if (typeof userInfo === 'object' && userInfo !== null) {
       setSession(userInfo)
     }
   }, [])
-
+  
   return (
     <SessionContext.Provider value={session}>
       {children}
