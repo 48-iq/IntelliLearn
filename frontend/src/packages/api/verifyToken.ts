@@ -4,7 +4,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 export const verifyToken = (router: AppRouterInstance) => {
   const token = getCookie('token')
-  const secretKey = 'my_secret_key'
+  const secretKey = '1234'
 
   if (!token) {
     router.push('/auth/login')
@@ -14,11 +14,8 @@ export const verifyToken = (router: AppRouterInstance) => {
 
   try {
     const decoded = jwt.verify(token, secretKey)
-    console.log(decoded)
-    return decoded;
+    return decoded
   } catch (error) {
-    console.log('token error', error)
     return null
   }
 }
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMjMsImlhdCI6MTcxNTYzNTYyOH0.qBI6qgth9P12lWpnhnaYZFgYJPTziAtJ4PhUgr5bq64

@@ -4,6 +4,7 @@ import Layout, { Content, Footer, Header } from "antd/es/layout/layout"
 import { ReactNode } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { useSession } from "../session/session-provider"
 
 interface MainLayotProps {
   children: ReactNode
@@ -11,7 +12,9 @@ interface MainLayotProps {
 
 export const MainLayout = ({children}: MainLayotProps) => {
   const userRole: string = student.role
-
+  const session = useSession()
+  const username = session?.username
+  console.log(username)
   const menuItems = [
     {
       key: '1',
@@ -20,26 +23,16 @@ export const MainLayout = ({children}: MainLayotProps) => {
     },
     {
       key: '2',
-      label: 'Логин',
-      link: '/auth/login'
-    },
-    {
-      key: '3',
       label: 'Профиль',
       link: '/users/user'
     },
     {
-      key: '4',
+      key: '3',
       label: 'Создать задачу',
       link: '/create/task'
     },
     {
-      key: '5',
-      label: 'Регистрация',
-      link: '/auth/registration'  
-    },
-    {
-      key: '6',
+      key: '4',
       label: 'Задания',
       link: '/tasks'  
     }
@@ -47,7 +40,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
 
   if (userRole === "teacher") {
     menuItems.splice(3, 0, {
-      key: '5',
+      key: '3',
       label: 'Создать задачу',
       link: '/create/task'
     })
@@ -65,7 +58,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
         <Logo src="/logo.png" />
           <Menu 
             mode="horizontal"
-            style={{width: '42%', marginLeft: '22%', backgroundColor: '#F5F5F5'}}
+            style={{width: '40%', marginLeft: '22%', backgroundColor: '#F5F5F5'}}
           >
             {items}
           </Menu>

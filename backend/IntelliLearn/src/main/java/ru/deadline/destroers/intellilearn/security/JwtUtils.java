@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Component
 public class JwtUtils {
-    private String tokenKey;
+    private String tokenKey = "1234";
 
     public String generateToken(User user) {
         Date expirationDate= Date.from(ZonedDateTime.now().toInstant());
