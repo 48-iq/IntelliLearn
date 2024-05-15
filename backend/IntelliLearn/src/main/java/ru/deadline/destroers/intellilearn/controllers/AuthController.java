@@ -1,13 +1,12 @@
 package ru.deadline.destroers.intellilearn.controllers;
 
-
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,24 +14,34 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.deadline.destroers.intellilearn.dto.AuthDto;
 import ru.deadline.destroers.intellilearn.dto.UserDto;
 import ru.deadline.destroers.intellilearn.entities.User;
+import ru.deadline.destroers.intellilearn.repositories.GroupRepository;
 import ru.deadline.destroers.intellilearn.repositories.UserRepository;
-import ru.deadline.destroers.intellilearn.security.JwtUtil;
-import ru.deadline.destroers.intellilearn.services.impl.RegistrationServiceImpl;
+import ru.deadline.destroers.intellilearn.security.JwtUtils;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
-    private final RegistrationServiceImpl registrationService;
-    private final ModelMapper modelMapper;
+
     private final AuthenticationManager authenticationManager;
-    private final JwtUtil jwtUtil;
+    private final JwtUtils jwtUtils;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final GroupRepository groupRepository;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> register(@RequestBody UserDto userDto) {
-        User user = registrationService.register(modelMapper.map(userDto, User.class));
-        return ResponseEntity.ok(modelMapper.map(user, UserDto.class));
+    public ResponseEntity<String> register(@RequestBody UserDto userDto) {
+        User user = User.builder()
+                .id(userDto.getId())
+                .username(userDto.getUsername())
+                .password(userDto.getPassword())
+                .role(userDto.getRole())
+                .name(userDto.getName())
+                .surname(userDto.getSurname())
+                .group(groupRepository.findByName(userDto.getGroupName())
+                        .orElseThrow())
+                .build();
+        return ResponseEntity.ok(jwtUtils.generateToken(user));
     }
 
     @PostMapping("/login")
@@ -46,9 +55,8 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Incorrect credentials!");
         }
 
-        String token = jwtUtil.generateToken(userRepository.findByUsername(authDto.getUsername())
+        String token = jwtUtils.generateToken(userRepository.findByUsername(authDto.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found!")));
         return ResponseEntity.ok(token);
     }
-
 }

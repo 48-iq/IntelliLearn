@@ -1,10 +1,14 @@
 package ru.deadline.destroers.intellilearn.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@ToString
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class AuthDto {
     private String username;
     private String password;

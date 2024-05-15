@@ -1,32 +1,28 @@
 package ru.deadline.destroers.intellilearn.entities;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.File;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@ToString
 @Entity
-@Table(name = "tasks")
+@Table(name = "users")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
-    @Lob
-    @Column(name = "file",columnDefinition = "BLOB")
-    private byte[] file;
-    @Column(name = "subject", columnDefinition = "")
-    @OneToMany
-    private Subject subject;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    @OneToMany
-    private List<User> studentsList;
+    private String description;
+    @ManyToMany
+    @JoinTable(name = "students_users",
+        joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
+    private List<User> students;
 }

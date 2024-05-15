@@ -18,12 +18,12 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
-    private final JwtUtil jwtUtil;
+    private final JwtUtils jwtUtils;
     private final UserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
-                        HttpServletResponse httpServletResponse, FilterChain filterChain)
+                                    HttpServletResponse httpServletResponse, FilterChain filterChain)
             throws ServletException, IOException, IOException {
         String authHeader = httpServletRequest.getHeader("Authorization");
 
@@ -35,7 +35,7 @@ public class JwtFilter extends OncePerRequestFilter {
                         "Invalid JWT Token in Bearer Header");
             } else {
                 try {
-                    String username = jwtUtil.validateTokenAndRetrieveUsername(jwt);
+                    String username = jwtUtils.validateTokenAndRetrieveUsername(jwt);
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
                     UsernamePasswordAuthenticationToken authToken =
