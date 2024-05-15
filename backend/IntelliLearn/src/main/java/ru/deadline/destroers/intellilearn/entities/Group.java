@@ -13,12 +13,15 @@ import java.util.List;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @ManyToMany(mappedBy = "tasks")
+    @OneToMany(mappedBy = "group")
     private List<User> students;
+    @ManyToMany(mappedBy = "groups")
+    private List<Task> tasks;
+
 }

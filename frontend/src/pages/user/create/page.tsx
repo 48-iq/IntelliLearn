@@ -7,13 +7,15 @@ import { Content } from "antd/es/layout/layout"
 import styled from "styled-components"
 import { TitleCustom } from "@/packages/title"
 import { LoginEntity } from "@/entities/login"
+import { setCookie } from "cookies-next"
+import { useRouter } from "next/navigation"
 
 export const CreateUserPage = () => {
   const { fields } = useForm($$form)
-
+  const router = useRouter()
   const onFinish = async () => {
     try{
-      await LoginEntity.api.rest.registration({
+      const response = await LoginEntity.api.rest.registration({
         userName: fields.userName.value,
         password: fields.password.value,
         name: fields.name.value,
@@ -21,6 +23,8 @@ export const CreateUserPage = () => {
         groupName: fields.groupName.value,
         role: fields.role.value
       })
+      router.push('//')
+      setCookie('token', response)
       notification.success({message: 'Вход', placement: 'bottomRight'})
     } catch (e){
       console.log(e)
@@ -86,7 +90,7 @@ export const CreateUserPage = () => {
             label="Роль"
             size="large"
           />
-          <Button style={{marginTop: '5%'}} type="primary" block size="large">Обновить</Button>
+          <Button style={{marginTop: '5%'}} type="primary" htmlType="submit" block size="large">Обновить</Button>
         </Form>
       </MainContent>
     </Wrapper>

@@ -57,7 +57,7 @@ export const SingleUserPage = () => {
       <Wrapper>
         <LeftTab>
           <ImgWrapper>
-            <CircleImg src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"/>
+            <CircleImg src="../profileIcon.jpeg"/>
           </ImgWrapper>
           <MetaData> 
             <Tabs defaultActiveKey="1" items={items}/>

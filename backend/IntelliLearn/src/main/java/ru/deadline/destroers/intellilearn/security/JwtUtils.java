@@ -12,13 +12,15 @@ import java.util.Date;
 
 @Component
 public class JwtUtils {
-    private String tokenKey;
+    private String tokenKey = "1234";
 
     public String generateToken(User user) {
         Date expirationDate= Date.from(ZonedDateTime.now().toInstant());
         return JWT.create()
                 .withSubject("User details")
                 .withClaim("username", user.getUsername())
+                .withClaim("role", user.getRole())
+                .withClaim("password", user.getPassword())
                 .withIssuedAt(new Date())
                 .withExpiresAt(expirationDate)
                 .withIssuer("spring-app-IntelliLearn")

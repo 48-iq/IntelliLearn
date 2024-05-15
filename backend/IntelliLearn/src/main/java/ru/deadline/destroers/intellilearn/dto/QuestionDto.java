@@ -5,16 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
-    private Integer id;
-    private String username;
-    private String password;
-    private String name;
-    private String surname;
-    private String groupName;
-    private String role;
+public class QuestionDto {
+    private Integer correctresponseId;
+    private String question;
+    private List<String> responses;
+
 }

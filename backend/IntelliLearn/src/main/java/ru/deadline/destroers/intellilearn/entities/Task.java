@@ -4,6 +4,7 @@ package ru.deadline.destroers.intellilearn.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -13,16 +14,20 @@ import java.util.List;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String description;
+    private Date startDate;
+    private Date endDate;
     @ManyToMany
-    @JoinTable(name = "students_users",
+    @JoinTable(name = "tasks_groups",
         joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
-    private List<User> students;
+        inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName = "id"))
+    private List<Group> groups;
+
+    @OneToMany
+    private List<Question> questions;
 }
