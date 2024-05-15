@@ -90,7 +90,7 @@ export const CreateUserPage = () => {
             label="Роль"
             size="large"
           />
-          <Button style={{marginTop: '5%'}} type="primary" htmlType="submit" block size="large">Обновить</Button>
+          <Button style={{marginTop: '5%'}} type="primary" htmlType="submit" block size="large">Зарегистрироваться</Button>
         </Form>
       </MainContent>
     </Wrapper>
