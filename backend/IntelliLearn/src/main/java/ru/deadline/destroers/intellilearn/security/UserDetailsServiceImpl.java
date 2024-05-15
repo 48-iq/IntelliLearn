@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package ru.deadline.destroers.intellilearn.security;
 
 import lombok.RequiredArgsConstructor;
@@ -14,4 +15,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return null;
         //TODO: this method
     }
+=======
+package ru.deadline.destroers.intellilearn.security;public class UserDetailsServiceImpl {
+>>>>>>> d784bcb403447ad4b1b20a800460330762eac89a
 }
