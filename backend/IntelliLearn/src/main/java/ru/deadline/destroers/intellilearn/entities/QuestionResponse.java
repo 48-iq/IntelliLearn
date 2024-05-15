@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "questions_responses")
 public class QuestionResponse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,13 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "questions")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String question;
 
-    @OneToMany(mappedBy = "qestion")
+    @OneToMany(mappedBy = "question")
     private List<QuestionResponse> questionResponses;
 
     @ManyToOne

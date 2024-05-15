@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,4 @@ public class Group {
     @ManyToMany(mappedBy = "groups")
     private List<Task> tasks;
 
-    @OneToMany(mappedBy = "group")
-    private List<User> students;
 }

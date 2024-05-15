@@ -25,7 +25,4 @@ public class User {
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     private Group group;
     private String role;
-
-    @ManyToMany(mappedBy = "students")
-    private List<Task> tasks;
 }

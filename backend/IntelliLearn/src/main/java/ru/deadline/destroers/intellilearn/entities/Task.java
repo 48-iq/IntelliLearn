@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Task {
     @JoinTable(name = "tasks_groups",
         joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName = "id"))
-    private List<Group> students;
+    private List<Group> groups;
 
     @OneToMany
     private List<Question> questions;
