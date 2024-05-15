@@ -1,5 +1,5 @@
 import { InputField, SelectField, enumToOptions } from "@/packages/form-components/fields"
-import { LockFilled, UserOutlined } from "@ant-design/icons"
+import { LockFilled, UserOutlined, UsergroupAddOutlined } from "@ant-design/icons"
 import { Button, Divider, Form } from "antd"
 import { useForm } from "effector-forms"
 import { $$form, Role, onFinish } from "./model"
@@ -9,7 +9,6 @@ import { TitleCustom } from "@/packages/title"
 
 export const CreateUserPage = () => {
   const { fields } = useForm($$form)
-
   return (
     <Wrapper>
       <MainContent>
@@ -40,7 +39,7 @@ export const CreateUserPage = () => {
 
               <InputField
                 label={'Фамилия'}
-                addonBefore={<LockFilled />}
+                addonBefore={<UserOutlined />}
                 size="large"
                 field={fields.surName}
               />
@@ -55,7 +54,7 @@ export const CreateUserPage = () => {
 
               <InputField
                 label={'Группа'}
-                addonBefore={<LockFilled />}
+                addonBefore={<UsergroupAddOutlined />}
                 size="large"
                 field={fields.group}
               />

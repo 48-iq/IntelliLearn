@@ -1,3 +1,4 @@
+import { student } from "@/pages/login/model"
 import { Menu } from "antd"
 import Layout, { Content, Footer, Header } from "antd/es/layout/layout"
 import { ReactNode } from "react"
@@ -9,6 +10,7 @@ interface MainLayotProps {
 }
 
 export const MainLayout = ({children}: MainLayotProps) => {
+  const userRole: string = student.role
 
   const menuItems = [
     {
@@ -33,7 +35,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
     },
     {
       key: '5',
-      label: 'Регестрация',
+      label: 'Регистрация',
       link: '/auth/registration'  
     },
     {
@@ -41,13 +43,21 @@ export const MainLayout = ({children}: MainLayotProps) => {
       label: 'Задания',
       link: '/tasks'  
     }
-  ]
+  ];
+
+  if (userRole === "teacher") {
+    menuItems.splice(3, 0, {
+      key: '5',
+      label: 'Создать задачу',
+      link: '/create/task'
+    })
+  }
 
   const items = menuItems.map(item => (
     <Menu.Item key={item.key}>
       <Link to={item.link}>{item.label}</Link>
     </Menu.Item>
-  ))
+  ));
   
   return (
     <Layout>
@@ -68,7 +78,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
       <Footer style={{color: '#1677FF', fontSize: '15px'}}>create by deadline destroyers © {new Date().getFullYear()}</Footer>
     </Layout>
   )
-}
+};
 
 const HeaderCustom = styled(Header)`
   position: sticky;
