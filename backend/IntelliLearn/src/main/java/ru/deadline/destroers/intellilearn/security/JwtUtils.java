@@ -15,7 +15,7 @@ public class JwtUtils {
     private String tokenKey = "1234";
 
     public String generateToken(User user) {
-        Date expirationDate= Date.from(ZonedDateTime.now().toInstant());
+        Date expirationDate= Date.from(ZonedDateTime.now().plusDays(4).toInstant());
         return JWT.create()
                 .withSubject("User details")
                 .withClaim("username", user.getUsername())
