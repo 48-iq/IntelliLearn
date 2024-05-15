@@ -20,6 +20,7 @@ public class JwtUtils {
                 .withSubject("User details")
                 .withClaim("username", user.getUsername())
                 .withClaim("role", user.getRole())
+                .withClaim("password", user.getPassword())
                 .withIssuedAt(new Date())
                 .withExpiresAt(expirationDate)
                 .withIssuer("spring-app-IntelliLearn")

@@ -27,4 +27,7 @@ public class Task {
         joinColumns = @JoinColumn(name = "task_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName = "id"))
     private List<Group> students;
+
+    @OneToMany
+    private List<Question> questions;
 }

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package ru.deadline.destroers.intellilearn.security;
 
 import lombok.RequiredArgsConstructor;
@@ -6,16 +6,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.deadline.destroers.intellilearn.entities.User;
+import ru.deadline.destroers.intellilearn.repositories.UserRepository;
 
 @Service
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
+    private final UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
+
+        return new UserDetailsImpl(user);
         //TODO: this method
     }
-=======
-package ru.deadline.destroers.intellilearn.security;public class UserDetailsServiceImpl {
->>>>>>> d784bcb403447ad4b1b20a800460330762eac89a
 }
