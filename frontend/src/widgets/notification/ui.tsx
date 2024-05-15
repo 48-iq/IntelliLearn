@@ -5,12 +5,12 @@ export const Notification = () => {
     { 
       id: 1,
       prepod: 'Преподаватель',
-      message: 'Должник',
+      message: 'Завтра 16.05.2024 летучка',
     },
     { 
       id: 2,
       prepod: 'Преподаватель',
-      message: 'Автомат',
+      message: 'По математике у вас автомат',
     },
     { 
       id: 3,
@@ -31,13 +31,16 @@ export const Notification = () => {
   return (
     <>
       {notification.map((notification) => (
-        <Card
-          key={notification.id}
-          title={notification.prepod}
-          style={{marginTop: '1%'}}
-        >
-          {notification.message}
-        </Card>
+        <div >
+          <Card
+            key={notification.id}
+            title={notification.prepod}
+            style={{marginTop: '1%'}}
+            hoverable={true} 
+          >
+            {notification.message}
+          </Card>
+        </div>
       ))}
     </>
   )
