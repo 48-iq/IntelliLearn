@@ -1,3 +1,4 @@
+import { LoginEntity } from "@/entities/login"
 import { createForm } from "effector-forms"
 
 export enum Role {
@@ -34,3 +35,11 @@ export const $$form = createForm({
     }
   }
 })
+
+export const onFinish = () => {
+  try{
+    LoginEntity.api.rest.registration({dto: $$form.$values})
+  } catch(error) {
+    console.log(error)
+  }
+}

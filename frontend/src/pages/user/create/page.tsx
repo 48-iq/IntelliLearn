@@ -2,19 +2,19 @@ import { InputField, SelectField, enumToOptions } from "@/packages/form-componen
 import { LockFilled, UserOutlined } from "@ant-design/icons"
 import { Button, Divider, Form } from "antd"
 import { useForm } from "effector-forms"
-import { $$form } from "./model"
+import { $$form, Role, onFinish } from "./model"
 import { Content } from "antd/es/layout/layout"
 import styled from "styled-components"
-import { Role } from './model'
 import { TitleCustom } from "@/packages/title"
 
 export const CreateUserPage = () => {
   const { fields } = useForm($$form)
+
   return (
     <Wrapper>
       <MainContent>
         <TitleCustom>Регистрация</TitleCustom>
-        <Form>
+        <Form onFinish={onFinish}>
           <InputField
             label={'Логин'}
             addonBefore={<UserOutlined />}
