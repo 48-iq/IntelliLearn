@@ -1,14 +1,32 @@
 import { InputField, SelectField, enumToOptions } from "@/packages/form-components/fields"
 import { LockFilled, UserOutlined, UsergroupAddOutlined } from "@ant-design/icons"
-import { Button, Divider, Form } from "antd"
+import { Button, Divider, Form, notification } from "antd"
 import { useForm } from "effector-forms"
-import { $$form, Role, onFinish } from "./model"
+import { $$form, Role } from "./model"
 import { Content } from "antd/es/layout/layout"
 import styled from "styled-components"
 import { TitleCustom } from "@/packages/title"
+import { LoginEntity } from "@/entities/login"
 
 export const CreateUserPage = () => {
   const { fields } = useForm($$form)
+
+  const onFinish = async () => {
+    try{
+      await LoginEntity.api.rest.registration({
+        userName: fields.userName.value,
+        password: fields.password.value,
+        name: fields.name.value,
+        surName: fields.surName.value,
+        groupName: fields.groupName.value,
+        role: fields.role.value
+      })
+      notification.success({message: 'Вход', placement: 'bottomRight'})
+    } catch (e){
+      console.log(e)
+      notification.error({message: 'Ошибка', placement: 'bottomRight'})
+    }
+  }
   return (
     <Wrapper>
       <MainContent>
@@ -18,7 +36,7 @@ export const CreateUserPage = () => {
             label={'Логин'}
             addonBefore={<UserOutlined />}
             size="large"
-            field={fields.login}
+            field={fields.userName}
           />
 
           <InputField
@@ -34,7 +52,7 @@ export const CreateUserPage = () => {
                 label={'Имя'}
                 addonBefore={<UserOutlined />}
                 size="large"
-                field={fields.firstName}
+                field={fields.name}
               />
 
               <InputField
@@ -56,7 +74,7 @@ export const CreateUserPage = () => {
                 label={'Группа'}
                 addonBefore={<UsergroupAddOutlined />}
                 size="large"
-                field={fields.group}
+                field={fields.groupName}
               />
             </div>
           </FlexContainer>

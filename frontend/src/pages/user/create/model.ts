@@ -9,13 +9,13 @@ export enum Role {
 
 export const $$form = createForm({
   fields: {
-    login: {
+    userName: {
       init: ""
     },
     password: {
       init: ""
     },
-    firstName: {
+    name: {
       init: ""
     },
     surName: {
@@ -24,10 +24,7 @@ export const $$form = createForm({
     patronymic: {
       init: ""
     },
-    DateBirth: {
-      init: ""
-    },
-    group: {
+    groupName: {
       init: ""
     },
     role: {
@@ -35,11 +32,3 @@ export const $$form = createForm({
     }
   }
 })
-
-export const onFinish = () => {
-  try{
-    LoginEntity.api.rest.registration({dto: $$form.$values})
-  } catch(error) {
-    console.log(error)
-  }
-}
