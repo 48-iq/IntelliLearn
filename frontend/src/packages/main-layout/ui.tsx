@@ -58,7 +58,7 @@ export const MainLayout = ({children}: MainLayotProps) => {
         <Logo src="/logo.png" />
           <Menu 
             mode="horizontal"
-            style={{width: '42%', marginLeft: '22%', backgroundColor: '#F5F5F5'}}
+            style={{width: '40%', marginLeft: '22%', backgroundColor: '#F5F5F5'}}
           >
             {items}
           </Menu>
